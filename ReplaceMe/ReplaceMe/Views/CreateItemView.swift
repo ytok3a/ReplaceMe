@@ -18,7 +18,6 @@ struct CreateItemView: View {
     // TODO: add years everywhere
 
     let presets = ["None", "🧯 Fire Extinguisher", "💧 Water Filter", "👁 Contact Lens Case", "🪥 Toothbrush", "🧽 Sponges", "🛌 Pillows", "🏠 Air Filter", "🔋 Smoke Alarm Batteries"]
-    @State private var text: String = ""
 
     
     var body: some View {

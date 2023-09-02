@@ -14,6 +14,7 @@ class CreateItemViewViewModel: ObservableObject {
     @Published var replaceEvery = DateDuration(value: 2, unit: .weeks)
     @Published var remindBefore = DateDuration(value: 1, unit: .days)
     @Published var notes = ""
+    
     @Published var preset = "None"
 
     @Published var isPickerVisible = false
@@ -23,6 +24,18 @@ class CreateItemViewViewModel: ObservableObject {
     init() {}
     
     func save() {
+        guard canSave else {
+            return
+        }
+        
+        let newId = UUID().uuidString
+        let newItem = Item(id: newId,
+                           icon: icon,
+                           name: name,
+                           lastReplaced: lastReplaced,
+                           replaceEvery: replaceEvery,
+                           remindBefore: remindBefore,
+                           notes: notes)
         
     }
     var canSave: Bool {
