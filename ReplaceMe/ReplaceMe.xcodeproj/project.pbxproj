@@ -23,6 +23,8 @@
 		824AF88D2AA3664B003BAC8E /* ReadItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF88C2AA3664B003BAC8E /* ReadItemViewViewModel.swift */; };
 		824AF88F2AA3665C003BAC8E /* ItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF88E2AA3665C003BAC8E /* ItemViewViewModel.swift */; };
 		824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */; };
+		824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */; };
+		824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		824AF88C2AA3664B003BAC8E /* ReadItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemViewViewModel.swift; sourceTree = "<group>"; };
 		824AF88E2AA3665C003BAC8E /* ItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewViewModel.swift; sourceTree = "<group>"; };
 		824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationDatePicker.swift; sourceTree = "<group>"; };
+		824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
+		824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +157,7 @@
 				824AF8802AA3650C003BAC8E /* CreateItemView.swift */,
 				824AF8822AA36522003BAC8E /* ReadItemView.swift */,
 				824AF8842AA36594003BAC8E /* ItemView.swift */,
+				824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -173,6 +178,7 @@
 			children = (
 				824AF8862AA365ED003BAC8E /* Item.swift */,
 				824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */,
+				824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -317,9 +323,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				824AF8532AA36110003BAC8E /* ListView.swift in Sources */,
+				824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */,
 				824AF8512AA36110003BAC8E /* ReplaceMeApp.swift in Sources */,
 				824AF88B2AA36643003BAC8E /* CreateItemViewViewModel.swift in Sources */,
 				824AF8812AA3650C003BAC8E /* CreateItemView.swift in Sources */,
+				824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */,
 				824AF8852AA36594003BAC8E /* ItemView.swift in Sources */,
 				824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */,
 				824AF88D2AA3664B003BAC8E /* ReadItemViewViewModel.swift in Sources */,

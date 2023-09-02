@@ -71,6 +71,17 @@ struct DateDuration {
     enum Unit: String, CaseIterable {
         case days, weeks, months
     }
+    
+    var inDays: Int {
+        if (unit == .days) {
+            return value
+        } else if (unit == .weeks) {
+            return value*7
+        }else if (unit == .months) {
+            return value*31
+        }
+        return 0
+    }
 }
 
 struct DatePickerView_Previews: PreviewProvider {

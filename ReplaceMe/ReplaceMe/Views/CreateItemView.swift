@@ -15,6 +15,10 @@ struct CreateItemView: View {
     // TODO: if clicked anywhere else it should close too
     // TODO: make gramatically correct
     // TODO: Validate if reminding before replacement
+    // TODO: add years everywhere
+
+    let presets = ["None", "🧯 Fire Extinguisher", "💧 Water Filter", "👁 Contact Lens Case", "🪥 Toothbrush", "🧽 Sponges", "🛌 Pillows", "🏠 Air Filter", "🔋 Smoke Alarm Batteries"]
+    @State private var text: String = ""
 
     
     var body: some View {
@@ -22,23 +26,28 @@ struct CreateItemView: View {
 
             VStack {
                 
+                
+                TextField("", text: $viewModel.icon)
+                    .font(.system(size: 64))
+                    .padding(10)
+                    .background(.gray)
+                    .clipShape(Circle())
+                    .multilineTextAlignment(.center)
+                    .onChange(of: viewModel.icon) { _ in
+                        viewModel.icon = String(viewModel.icon.prefix(1))
+                    }
+                
+                
                 Form {
                     
+
+                    
+                                        
                     Section {
-                        
-                        Text("🧯")
-                            .font(.largeTitle)
-                            .padding(10)
-                            .background(.red)
-                            .clipShape(Circle())
                         
                         TextField("Name", text: $viewModel.name)
                             .textFieldStyle(DefaultTextFieldStyle())
                         
-                    }
-
-                                        
-                    Section {
                         
                         // MARK: Last Replaced ///////////////////////////////////////////////////////////////////////////////////////////////////////
                         DatePicker("Last Replaced", selection: $viewModel.lastReplaced, displayedComponents: .date)
@@ -81,23 +90,48 @@ struct CreateItemView: View {
                     
                     
                     Section {
-                                                
-                        TextField("Notes", text: $viewModel.notes)
+
+
+                        TextField("", text: $viewModel.notes)
                             .textFieldStyle(DefaultTextFieldStyle())
 
+
+                    }header: {
+                        Text("Notes")
                     }
+                    
+                    Section {
+                                                
+                        Picker("Presets", selection: $viewModel.preset) {
+                            ForEach(0 ..< presets.count, id: \.self) {
+                               Text(self.presets[$0])
+                            }
+                         }
+                        
+                    } header: {
+                        Text("Optional")
+                    }
+                    
+                    // TODO: have preset autopopulate viewModel
+                    // TODO: remove preset selection in this when anything changed
                     
                 }
                 
             }
             
-            .navigationTitle("New Item")
+//            .navigationTitle("New Item")
 
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save") {
-                        viewModel.save()
-                        newItemPresented = false
+                        if viewModel.canSave {
+                            viewModel.save()
+                            newItemPresented = false
+                        } else {
+                            viewModel.showAlert = true
+                        }
+                        
+                        
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -105,11 +139,19 @@ struct CreateItemView: View {
                         
                     }
                 }
+                
             }
             
         }
+        .scrollDismissesKeyboard(.interactively)
+        .alert(isPresented: $viewModel.showAlert) {
+            Alert(title: Text("Error"), message: Text("Please make sure to fill in all fields, select a replaced date that is before or on today, and set a reminder that happens before replacement."))
+        }
+
 
     }
+    
+
     
 }
 
