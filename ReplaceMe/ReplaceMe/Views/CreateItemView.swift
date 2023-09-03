@@ -51,9 +51,9 @@ struct CreateItemView: View {
                     
                     TextField("Name", text: $item.name)
 
-                    
-                    TextField("Notes", text: $item.notes)
-                        .textFieldStyle(DefaultTextFieldStyle())
+                    TextField("Notes", text: $item.notes,  axis: .vertical)
+                        .lineLimit(1...5)
+
                     
                 }header: {
 //                    Text("Notes")
