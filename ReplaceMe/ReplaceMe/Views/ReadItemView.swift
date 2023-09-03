@@ -15,36 +15,47 @@ struct ReadItemView: View {
     
     @State private var showingAlert = false
     
+    @State private var sheetIsPresented = false
+
+    
     // TODO: add changes from create view here
 
     
     var body: some View {
+        
             
         VStack {
-            
-            Text("\(item.icon)")
-                .font(.system(size: 64))
-                .padding(10)
-                .background(Color.init(item.getColor()))
-                .clipShape(Circle())
-                .multilineTextAlignment(.center)
             
             Form {
                 
                 Section {
-                    
                     HStack {
-                        Text("\(item.name)")
-                    }
-                    
-                    if (!item.notes.isEmpty) {
-                        HStack {
-                            Text("\(item.notes)")
+                        Spacer()
+                        
+                        VStack {
+                            Text("\(item.icon)")
+                                .font(.system(size: 64))
+                                .padding([.bottom], 10)
+                                .multilineTextAlignment(.center)
+                            
+                            Text("\(item.name)")
+                                .padding([.bottom], 0.01)
+
+                            
+                            Button("Replace Me") {
+                                showingAlert = true
+                            }
+                            .font(.system(size: 16, design: .default))
+
                         }
+                        Spacer()
+                        
+
                     }
-
-
                 }
+                .listRowBackground(Color.clear)
+                // TODO: shrink space above emoji
+
                 
                 Section {
                     
@@ -53,6 +64,7 @@ struct ReadItemView: View {
                         Text("Last Replaced")
                         Spacer()
                         Text("\(item.lastReplaced.getAsString())")
+                            .foregroundColor(.gray)
                     }
 
                     
@@ -60,14 +72,18 @@ struct ReadItemView: View {
                         Text("Replace Every")
                         Spacer()
                         Text("\(item.replaceEvery.value) \(item.replaceEvery.unit.rawValue)")
+                            .foregroundColor(.gray)
                     }
                     
                     HStack {
                         Text("Remind Me")
                         Spacer()
                         Text("\(item.remindBefore.value) \(item.remindBefore.unit.rawValue) before")
+                            .foregroundColor(.gray)
                     }
 
+                } header: {
+                    Text("Settings")
                 }
 
 //                Section {
@@ -86,6 +102,7 @@ struct ReadItemView: View {
                         Text("Replace On")
                         Spacer()
                         Text("\(item.getReplacementDate().getAsString())")
+                            .foregroundColor(.gray)
                     }
                     .disabled(true)
                     
@@ -93,15 +110,20 @@ struct ReadItemView: View {
                         Text("Time Remaining")
                         Spacer()
                         Text("\(item.getRemainingTime())")
+                            .foregroundColor(.gray)
                     }
                     .disabled(true)
 
                     
+                } header: {
+                    Text("UPCOMING")
                 }
                 
-                Button("Replace Me", systemImage: "arrow.clockwise") {
-                    showingAlert = true
-                }
+                
+//                Button("Replace Me", systemImage: "arrow.clockwise") {
+//                    showingAlert = true
+//                }
+                
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Replace This Item?"),
                           // message: Text("You can always "),
@@ -112,22 +134,50 @@ struct ReadItemView: View {
                           secondaryButton: .cancel() )
                 }
                 
+                
+                if (!item.notes.isEmpty) {
+                    Section {
+
+                        HStack {
+                            Text("\(item.notes)")
+                        }
+                        
+                    } header: {
+                        Text("Notes")
+                    }
+                }
+
+                
             }
 
-            
         }
         
+//        .navigationBarTitle("\(item.name)")
+
         
+//        .navigationBarHidden(true)
                     
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button("Edit", role: .cancel) {
-//                    dismiss()
+                Button("Edit") {
+                                        
+                    sheetIsPresented.toggle()
+
                     // TODO: edit, remove .cancel
                 }
             }
             
         }
+        
+        .sheet(isPresented: $sheetIsPresented) {
+            
+            NavigationStack {
+                CreateItemView(item: item) // existing item
+            }
+        }
+        
+        .navigationBarTitle(Text(""), displayMode: .inline)
+
     }
 
 }

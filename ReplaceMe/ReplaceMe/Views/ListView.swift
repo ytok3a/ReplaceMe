@@ -25,28 +25,34 @@ struct ListView: View {
                             NavigationLink {
                                   ReadItemView(item: item)
                             } label: {
-                                HStack {
-                                    
+                                
+                                HStack() {
                                     Text("\(item.icon)")
-                                        .font(.system(size: 64))
-                                        .padding(10)
-                                        .background(Color.init(item.getColor()))
-                                        .clipShape(Circle())
-                                        .multilineTextAlignment(.center)
-                                                                        
-                                    VStack {
+
+                                    VStack(alignment: .leading) {
                                         Text(item.name)
-                                            .bold()
-                                    
+//                                            .fontWeight(.bold)
                                         Text(item.getRemainingTime())
-                                            .fontWeight(.light)
-
+                                            .font(.subheadline).foregroundColor(.gray)
+//                                            .fontWeight(.regular)
                                     }
-                                    // TODO: why is it centered?
-
-
+                                    .padding([.leading], 5)
+                                    
+                                    Spacer()
                                 }
                                 
+                                
+//                                .background(Color.init(item.getColor()))
+
+                                
+                                
+                                
+                                
+                                
+                                
+                                
+
+
                             }
                         }
                         .swipeActions {
@@ -56,6 +62,7 @@ struct ListView: View {
                         }
                     }
                 }
+                
                 
             }
             .navigationTitle("Your Items")
@@ -78,6 +85,7 @@ struct ListView: View {
                 }
             }
         }
+
     }
     
     

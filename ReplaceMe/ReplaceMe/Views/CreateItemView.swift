@@ -25,8 +25,6 @@ struct CreateItemView: View {
     // TODO: make gramatically correct
     // TODO: remove preset selection in this when anything changed
 
-
-//    @State private var preset_selection = "🧯 Fire Extinguisher"
     @State private var preset_selection = 0
 
 
@@ -34,18 +32,41 @@ struct CreateItemView: View {
             
         VStack {
             
-            TextField("", text: $item.icon)
-                .font(.system(size: 64))
-                .padding(10)
-                .background(.gray)
-                .clipShape(Circle())
-                .multilineTextAlignment(.center)
-                .onChange(of: item.icon, { oldValue, newValue in
-                    // handle only 1 emoji at a time
-                    item.icon = String(item.icon.prefix(1))
-                })
+//            TextField("", text: $item.icon)
+//                .font(.system(size: 64))
+//                .padding(10)
+//                .background(.gray)
+//                .clipShape(Circle())
+//                .multilineTextAlignment(.center)
+//                .onChange(of: item.icon, { oldValue, newValue in
+//                    // handle only 1 emoji at a time
+//                    item.icon = String(item.icon.prefix(1))
+//                })
+            
+            
             
             Form {
+
+                
+                
+                Section {
+                    
+                    
+                    TextField("", text: $item.icon)
+                        .font(.system(size: 64))
+                        .padding(10)
+                        .background(.gray)
+                        .clipShape(Circle())
+                        .multilineTextAlignment(.center)
+                        .onChange(of: item.icon, { oldValue, newValue in
+                            // handle only 1 emoji at a time
+                            item.icon = String(item.icon.prefix(1))
+                        })
+                    
+                    
+                }
+                .listRowBackground(Color.clear)
+
                 
                 
                 Section {
@@ -56,8 +77,8 @@ struct CreateItemView: View {
                         .lineLimit(1...5)
 
                     
-                }header: {
-//                    Text("Notes")
+                } header: {
+                    Text("Details")
                 }
                 
                 Section {
@@ -94,6 +115,8 @@ struct CreateItemView: View {
                         DateDurationPicker(selection: $item.remindBefore, values: Array(1..<100), units: DateDuration.Unit.allCases)
                     }
                     
+                } header: {
+                    Text("Settings")
                 }
 
 
@@ -123,6 +146,7 @@ struct CreateItemView: View {
 
             
         }
+        
                     
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
