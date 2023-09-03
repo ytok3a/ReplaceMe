@@ -11,6 +11,7 @@ import SwiftData
 struct CreateItemView: View {
     @State private var isPickerVisible = false
     @State private var isPicker2Visible = false
+    @State private var showingAlert = false
     
     @Environment(\.dismiss) private var dismiss
     
@@ -126,14 +127,16 @@ struct CreateItemView: View {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
                     if item.canSave() {
-                        dismiss()
                         modelContext.insert(item)
-                        
+                        dismiss()
                     } else {
-//                            item.showAlert = true
+                        showingAlert = true
                     }
-                    
                 }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Error"), message: Text("Please make sure to fill in all fields, select a replaced date that is before or on today, and set a reminder that happens before replacement."))
+                }
+
             }
             ToolbarItem(placement: .navigationBarLeading) {
                 Button("Cancel", role: .cancel) {
@@ -185,9 +188,6 @@ struct CreateItemHelper: View {
 
 
 //        .scrollDismissesKeyboard(.interactively)
-//        .alert(isPresented: $item.showAlert) {
-//            Alert(title: Text("Error"), message: Text("Please make sure to fill in all fields, select a replaced date that is before or on today, and set a reminder that happens before replacement."))
-//        }
 
 
 //    }
