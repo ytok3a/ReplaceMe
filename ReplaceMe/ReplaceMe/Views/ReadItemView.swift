@@ -71,14 +71,14 @@ struct ReadItemView: View {
                     HStack {
                         Text("Replace Every")
                         Spacer()
-                        Text("\(item.replaceEvery.value) \(item.replaceEvery.unit.rawValue)")
+                        Text("\(item.replaceEvery.asString())")
                             .foregroundColor(.gray)
                     }
                     
                     HStack {
                         Text("Remind Me")
                         Spacer()
-                        Text("\(item.remindBefore.value) \(item.remindBefore.unit.rawValue) before")
+                        Text("\(item.remindBefore.asString()) before")
                             .foregroundColor(.gray)
                     }
 
@@ -109,7 +109,7 @@ struct ReadItemView: View {
                     HStack {
                         Text("Time Remaining")
                         Spacer()
-                        Text("\(item.getRemainingTime())")
+                        Text("\(item.getRemainingTimeAsString())")
                             .foregroundColor(.gray)
                     }
                     .disabled(true)

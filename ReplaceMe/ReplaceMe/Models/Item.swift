@@ -47,43 +47,67 @@ class Item {
         
     }
     
-    func getRemainingTime() -> String {
+    func getRemainingTimeAsString() -> String {
         
         var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
-        
-        // it's not counting today, but it should
         timeRemaining.day! += 1
+        print("timeRemaining: \(timeRemaining)")
 
-        
         let year = timeRemaining.year ?? 0
-        let y = (year != 0) ? "\(year)Y" : ""
-        
         let month = timeRemaining.month ?? 0
-        let m = (month != 0) ? "\(month)M" : ""
-        
         let week = timeRemaining.weekOfYear ?? 0
-        let w = (week != 0) ? "\(week)W" : ""
-
         let day = timeRemaining.day ?? 0
-        let d = (day != 0) ? "\(day)D" : ""
         
-        return "\(y) \(m) \(w) \(d)".trimmingCharacters(in: .whitespaces)
+        // get singular unit and value (rounded up)
+        var value: Int
+        var unit: String
+
+        if (year > 0 || month >= 4) {
+            value = year
+            if (month >= 4) {
+                value += 1
+            }
+            unit = "years"
+        } else if (month > 0 || week >= 3) {
+            value = month
+            if (week >= 3) {
+                value += 1
+            }
+            unit = "months"
+        } else if (week > 0 || day >= 5) {
+            value = week
+            if (day >= 5) {
+                value += 1
+            }
+            unit = "weeks"
+        } else {
+            value = day
+            unit = "days"
+        }
+
+        // remove s if plural (same logic in DurationDatePicker)
+        var x = "\(value) \(unit)"
+        if (value == 1) {
+            x.removeLast()
+        }
+        
+        return x
         
     }
     
     func getPercentage() -> Double {
-        var replacementDate = getReplacementDate()
+        let replacementDate = getReplacementDate()
         
         // get remaining days in replacement period
         var timeRemainingInDays  = Calendar.current.dateComponents([.day], from: Date(), to: replacementDate)
         timeRemainingInDays.day! += 1
         
         // get the total days in the replacement period
-        var repacementPeriodInDays = Calendar.current.dateComponents([.day], from: lastReplaced, to: replacementDate)
+        let repacementPeriodInDays = Calendar.current.dateComponents([.day], from: lastReplaced, to: replacementDate)
         //        repacementPeriodInDays.day! += 1
 
         // divide
-        var percentRemaining = Double(timeRemainingInDays.day ?? 0) / Double(repacementPeriodInDays.day ?? 1)
+        let percentRemaining = Double(timeRemainingInDays.day ?? 0) / Double(repacementPeriodInDays.day ?? 1)
         
         return percentRemaining
 
@@ -114,8 +138,14 @@ class Item {
         return UIColor(red: 1.0 , green: 1.0, blue: 1.0, alpha: 1.0)
     }
 
+    func isNameUnique(items: [Item]) -> Bool {
+        
+        // TODO: implement this
+        return true
+    }
     
-    func canSave() -> Bool {
+    
+    func canSave(items: [Item]) -> Bool {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             return false
         }
@@ -128,7 +158,9 @@ class Item {
             return false
         }
 
-        //TODO: maybe need to check for duplicated names
+        guard isNameUnique(items: items) else {
+            return false
+        }
 
         return true;
     }

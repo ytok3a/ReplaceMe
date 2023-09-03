@@ -32,7 +32,7 @@ struct ListView: View {
                                     VStack(alignment: .leading) {
                                         Text(item.name)
 //                                            .fontWeight(.bold)
-                                        Text(item.getRemainingTime())
+                                        Text(item.getRemainingTimeAsString())
                                             .font(.subheadline).foregroundColor(.gray)
 //                                            .fontWeight(.regular)
                                     }

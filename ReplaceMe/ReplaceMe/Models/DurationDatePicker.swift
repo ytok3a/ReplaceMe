@@ -84,6 +84,18 @@ struct DateDuration: Codable {
         }
         return 0
     }
+    
+    func asString() -> String {
+        
+        var x = "\(value) \(unit)"
+        
+        // remove s if plural
+        if (value == 1) {
+            x.removeLast()
+        }
+        
+        return x
+    }
         
 }
 

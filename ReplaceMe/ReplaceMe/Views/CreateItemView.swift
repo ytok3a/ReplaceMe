@@ -18,6 +18,7 @@ struct CreateItemView: View {
     // Parameters
     @State var item: Item
 
+    @Query var items: [Item] // for
     @Environment(\.modelContext) var modelContext
 
     // TODO: promt emoji keyboard
@@ -90,7 +91,8 @@ struct CreateItemView: View {
                     HStack {
                         Text("Replace Every")
                         Spacer()
-                        Text("\(item.replaceEvery.value) \(item.replaceEvery.unit.rawValue)")
+                        Text("\(item.replaceEvery.asString())")
+
                     }
                     .onTapGesture {
                         withAnimation {
@@ -104,7 +106,9 @@ struct CreateItemView: View {
                     HStack {
                         Text("Remind Me")
                         Spacer()
-                        Text("\(item.remindBefore.value) \(item.remindBefore.unit.rawValue) before")
+                        Text("\(item.remindBefore.asString()) before")
+
+                        
                     }
                     .onTapGesture {
                         withAnimation {
@@ -151,7 +155,7 @@ struct CreateItemView: View {
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
-                    if item.canSave() {
+                    if item.canSave(items: items) {
                         modelContext.insert(item)
                         dismiss()
                     } else {
