@@ -6,13 +6,14 @@
 //
 
 import SwiftUI
-//import SwiftData
+import SwiftData
 
 @main
 struct ReplaceMeApp: App {
     var body: some Scene {
         WindowGroup {
             ListView()
+                .modelContainer(for: Item.self)
         }
     }
 }

@@ -18,13 +18,10 @@
 		824AF8832AA36522003BAC8E /* ReadItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8822AA36522003BAC8E /* ReadItemView.swift */; };
 		824AF8852AA36594003BAC8E /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8842AA36594003BAC8E /* ItemView.swift */; };
 		824AF8872AA365ED003BAC8E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8862AA365ED003BAC8E /* Item.swift */; };
-		824AF8892AA36638003BAC8E /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8882AA36638003BAC8E /* ListViewViewModel.swift */; };
-		824AF88B2AA36643003BAC8E /* CreateItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF88A2AA36643003BAC8E /* CreateItemViewViewModel.swift */; };
-		824AF88D2AA3664B003BAC8E /* ReadItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF88C2AA3664B003BAC8E /* ReadItemViewViewModel.swift */; };
-		824AF88F2AA3665C003BAC8E /* ItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF88E2AA3665C003BAC8E /* ItemViewViewModel.swift */; };
 		824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */; };
 		824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */; };
 		824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */; };
+		82D4AC492AA4350500CC5B03 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,13 +56,10 @@
 		824AF8822AA36522003BAC8E /* ReadItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemView.swift; sourceTree = "<group>"; };
 		824AF8842AA36594003BAC8E /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		824AF8862AA365ED003BAC8E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		824AF8882AA36638003BAC8E /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
-		824AF88A2AA36643003BAC8E /* CreateItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemViewViewModel.swift; sourceTree = "<group>"; };
-		824AF88C2AA3664B003BAC8E /* ReadItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemViewViewModel.swift; sourceTree = "<group>"; };
-		824AF88E2AA3665C003BAC8E /* ItemViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewViewModel.swift; sourceTree = "<group>"; };
 		824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationDatePicker.swift; sourceTree = "<group>"; };
 		824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
 		824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +115,7 @@
 				824AF87B2AA3639B003BAC8E /* ViewModels */,
 				824AF87A2AA36392003BAC8E /* Views */,
 				824AF8562AA36111003BAC8E /* Preview Content */,
+				82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */,
 			);
 			path = ReplaceMe;
 			sourceTree = "<group>";
@@ -165,10 +160,6 @@
 		824AF87B2AA3639B003BAC8E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				824AF8882AA36638003BAC8E /* ListViewViewModel.swift */,
-				824AF88A2AA36643003BAC8E /* CreateItemViewViewModel.swift */,
-				824AF88C2AA3664B003BAC8E /* ReadItemViewViewModel.swift */,
-				824AF88E2AA3665C003BAC8E /* ItemViewViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -256,7 +247,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					824AF84C2AA36110003BAC8E = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -324,17 +315,14 @@
 			files = (
 				824AF8532AA36110003BAC8E /* ListView.swift in Sources */,
 				824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */,
+				82D4AC492AA4350500CC5B03 /* PreviewHelpers.swift in Sources */,
 				824AF8512AA36110003BAC8E /* ReplaceMeApp.swift in Sources */,
-				824AF88B2AA36643003BAC8E /* CreateItemViewViewModel.swift in Sources */,
 				824AF8812AA3650C003BAC8E /* CreateItemView.swift in Sources */,
 				824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */,
 				824AF8852AA36594003BAC8E /* ItemView.swift in Sources */,
 				824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */,
-				824AF88D2AA3664B003BAC8E /* ReadItemViewViewModel.swift in Sources */,
-				824AF88F2AA3665C003BAC8E /* ItemViewViewModel.swift in Sources */,
 				824AF8872AA365ED003BAC8E /* Item.swift in Sources */,
 				824AF8832AA36522003BAC8E /* ReadItemView.swift in Sources */,
-				824AF8892AA36638003BAC8E /* ListViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +395,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -467,6 +456,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

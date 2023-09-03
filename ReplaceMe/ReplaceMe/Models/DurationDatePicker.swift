@@ -64,11 +64,11 @@ struct DateDurationPicker: UIViewRepresentable {
     }
 }
 
-struct DateDuration {
+struct DateDuration: Codable {
     let value: Int
     let unit: Unit
     
-    enum Unit: String, CaseIterable {
+    enum Unit: String, CaseIterable, Codable {
         case days, weeks, months
     }
     
@@ -82,6 +82,7 @@ struct DateDuration {
         }
         return 0
     }
+        
 }
 
 struct DatePickerView_Previews: PreviewProvider {

@@ -6,25 +6,52 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ListView: View {
-    @StateObject var viewModel = ListViewViewModel()
+    @State private var sheetIsPresented = false
+
+    @Query var items: [Item]
+    @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationView {
             VStack {
                 
+                List {
+                    ForEach (items) { item in
+                        HStack {
+                           Text(item.name)
+
+//                            NavigationLink {
+//                                CreateItemView(item: item)
+//                            } label: {
+//                                Text(item.name)
+//                            }
+                        }
+                    }
+                }
+                
             }
             .navigationTitle("Your Items")
             .toolbar {
                 Button {
-                    viewModel.showingCreateItemView = true
+//                    CreateItemView(item: item())
+                    sheetIsPresented.toggle()
+//                    viewModel.showingCreateItemView = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
-            .sheet(isPresented: $viewModel.showingCreateItemView) {
-                CreateItemView(newItemPresented: $viewModel.showingCreateItemView)
+            
+// TODO: this still might be needed
+            
+            .sheet(isPresented: $sheetIsPresented) {
+                
+                NavigationStack {
+                    CreateItemView(item: Item()) // new item
+
+                }
             }
         }
     }
@@ -33,8 +60,8 @@ struct ListView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListView()
-    }
+#Preview {
+    ListView()
+        .modelContainer(previewContainer)
+
 }
