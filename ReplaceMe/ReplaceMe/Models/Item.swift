@@ -46,7 +46,11 @@ class Item {
     
     func getRemainingTime() -> String {
         
-        let timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
+        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
+        
+        // it's not counting today, but it should
+        timeRemaining.day! += 1
+
         
         let year = timeRemaining.year ?? 0
         let y = (year != 0) ? "\(year)Y" : ""

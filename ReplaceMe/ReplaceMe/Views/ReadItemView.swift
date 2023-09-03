@@ -13,6 +13,8 @@ struct ReadItemView: View {
     // Parameters
     @State var item: Item
     
+    @State private var showingAlert = false
+    
     // TODO: add changes from create view here
 
     
@@ -99,9 +101,17 @@ struct ReadItemView: View {
                 }
                 
                 Button("Replace Me", systemImage: "arrow.clockwise") {
-                    
+                    showingAlert = true
                 }
-
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Replace This Item?"),
+                          // message: Text("You can always "),
+                          // TODO: add a message if they still have a few days left
+                          primaryButton: .default(Text("OK")) {
+                            item.lastReplaced = Date()
+                          },
+                          secondaryButton: .cancel() )
+                }
                 
             }
 

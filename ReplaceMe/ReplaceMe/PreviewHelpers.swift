@@ -18,7 +18,8 @@ let previewContainer: ModelContainer = {
             let item = Item(name: "Fire Extinguisher", icon: "🧯")
             context.insert(item)
             
-            let item2 = Item(name: "Toothbrush", icon: "🪥")
+            let item2 = Item(name: "Toothbrush", icon: "🪥", lastReplaced: Calendar(identifier: .iso8601).date(byAdding: .weekOfYear, value: -1, to: Date())!
+)
             context.insert(item2)
 
 
