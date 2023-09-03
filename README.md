@@ -2,12 +2,12 @@
 
 ## To Do
 
-- [ ] List Items
-- [ ] Create Item
-- [ ] Read Item
-- [ ] Update Item
-- [ ] Delete Item
-- [ ] Preset Items
+- [x] List Items
+- [x] Create Item
+- [x] Read Item
+- [x] Update Item
+- [x] Delete Item
+- [x] Preset Items
 - [ ] Send Notifications
 - [ ] Limit Items
 - [ ] Purchase Subscription
@@ -16,3 +16,5 @@
 Known Error
 
 modelContext.insert(item) works for new AND existing items, even if the name is changed or not. There are no duplicates for some reason.
+
+Showing 7D instead of 1W, problem would persist upwards i.e. 52W
