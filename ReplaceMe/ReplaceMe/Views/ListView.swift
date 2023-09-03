@@ -19,7 +19,7 @@ struct ListView: View {
             VStack {
                 
                 List {
-                    ForEach (items) { item in
+                    ForEach (items.sorted { $0.getReplacementDate() < $1.getReplacementDate()}) { item in
                         HStack {
                             
                             NavigationLink {
@@ -33,8 +33,17 @@ struct ListView: View {
                                         .background(Color.init(item.getColor()))
                                         .clipShape(Circle())
                                         .multilineTextAlignment(.center)
+                                                                        
+                                    VStack {
+                                        Text(item.name)
+                                            .bold()
                                     
-                                    Text(item.name)
+                                        Text(item.getRemainingTime())
+                                            .fontWeight(.light)
+
+                                    }
+                                    // TODO: why is it centered?
+
 
                                 }
                                 

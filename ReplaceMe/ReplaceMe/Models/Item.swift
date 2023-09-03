@@ -18,6 +18,8 @@ class Item {
     var remindBefore: DateDuration
     var notes: String
     
+    // TODO: SORT BY getReplacementDate()
+    
     init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "") {
         self.name = name
         self.icon = icon
