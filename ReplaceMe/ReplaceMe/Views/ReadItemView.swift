@@ -32,8 +32,24 @@ struct ReadItemView: View {
                 
                 Section {
                     
-                    TextField("Name", text: $item.name)
-                        .disabled(true)
+                    HStack {
+//                        Text("Name")
+//                        Spacer()
+                        Text("\(item.name)")
+                    }
+                    
+                    if (!item.notes.isEmpty) {
+                        HStack {
+                            Text("\(item.notes)")
+                        }
+                        
+                    }
+
+
+                }
+                
+                Section {
+                    
                     
                     HStack {
                         Text("Last Replaced")

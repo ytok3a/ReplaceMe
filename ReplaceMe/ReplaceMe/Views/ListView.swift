@@ -28,6 +28,11 @@ struct ListView: View {
                                 Text(item.name)
                             }
                         }
+                        .swipeActions {
+                            Button("Delete", role: .destructive) {
+                                modelContext.delete(item)
+                            }
+                        }
                     }
                 }
                 

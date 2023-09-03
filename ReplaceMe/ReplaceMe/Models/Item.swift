@@ -17,7 +17,7 @@ class Item {
     var remindBefore: DateDuration
     var notes: String
     
-    init(name: String = "", icon: String = "", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "") {
+    init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "") {
         self.name = name
         self.icon = icon
         self.lastReplaced = lastReplaced
@@ -35,6 +35,8 @@ class Item {
         } else if  (replaceEvery.unit == .weeks) {
             nextReplaced = Calendar.current.date(byAdding: .weekOfYear, value: replaceEvery.value, to: lastReplaced) ?? Date()
         } else if (replaceEvery.unit == .months) {
+            nextReplaced = Calendar.current.date(byAdding: .month, value: replaceEvery.value, to: lastReplaced) ?? Date()
+        } else if (replaceEvery.unit == .years) {
             nextReplaced = Calendar.current.date(byAdding: .year, value: replaceEvery.value, to: lastReplaced) ?? Date()
         }
 

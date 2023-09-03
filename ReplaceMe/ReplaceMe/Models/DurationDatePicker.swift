@@ -69,7 +69,7 @@ struct DateDuration: Codable {
     let unit: Unit
     
     enum Unit: String, CaseIterable, Codable {
-        case days, weeks, months
+        case days, weeks, months, years
     }
     
     var inDays: Int {
@@ -78,7 +78,9 @@ struct DateDuration: Codable {
         } else if (unit == .weeks) {
             return value*7
         }else if (unit == .months) {
-            return value*31
+            return value*30
+        } else if (unit == .years) {
+            return value*365
         }
         return 0
     }

@@ -19,15 +19,15 @@ struct CreateItemView: View {
 
     @Environment(\.modelContext) var modelContext
 
+    // TODO: promt emoji keyboard
     // TODO: if clicked anywhere else it should close too
     // TODO: make gramatically correct
-    // TODO: add years everywhere
-    // TODO: have preset autopopulate viewModel
     // TODO: remove preset selection in this when anything changed
 
 
-    @State private var preset_selection = "🧯 Fire Extinguisher"
-    
+//    @State private var preset_selection = "🧯 Fire Extinguisher"
+    @State private var preset_selection = 0
+
 
     var body: some View {
             
@@ -45,9 +45,21 @@ struct CreateItemView: View {
             
             Form {
                 
+                
                 Section {
                     
                     TextField("Name", text: $item.name)
+
+                    
+                    TextField("Notes", text: $item.notes)
+                        .textFieldStyle(DefaultTextFieldStyle())
+                    
+                }header: {
+//                    Text("Notes")
+                }
+                
+                Section {
+                    
                     
                     DatePicker("Last Replaced", selection: $item.lastReplaced, displayedComponents: .date)
                         .datePickerStyle(.compact)
@@ -82,27 +94,23 @@ struct CreateItemView: View {
                     
                 }
 
-                Section {
-                    
-                    TextField("", text: $item.notes)
-                        .textFieldStyle(DefaultTextFieldStyle())
-                    
-                }header: {
-                    Text("Notes")
-                }
 
                 Section {
                     
                     Picker("Presets", selection: $preset_selection) {
                         ForEach(0 ..< presets.count, id: \.self) {
-                            Text("\(presets[$0].icon) \(presets[$0].name)")
+                            Text("\(presets[$0].icon) \(presets[$0].name)").tag($0)
                                 // .tag($0)
                         }
                     }
-
-//                    .onChange(of: preset_selection) { _, _ in
-//                        print("Hello world")
-//                    }
+                    .onChange(of: preset_selection) { _, _ in
+                        print("Hello \(preset_selection)")
+                        print("This is \(presets[preset_selection])")
+//                        if (preset_selection != 0) {
+                            item = presets[preset_selection]
+//                        }
+                        
+                    }
                     
                 } header: {
                     Text("Optional")
