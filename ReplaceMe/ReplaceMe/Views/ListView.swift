@@ -21,13 +21,12 @@ struct ListView: View {
                 List {
                     ForEach (items) { item in
                         HStack {
-                           Text(item.name)
-
-//                            NavigationLink {
-//                                CreateItemView(item: item)
-//                            } label: {
-//                                Text(item.name)
-//                            }
+                            
+                            NavigationLink {
+                                ReadItemView(item: item)
+                            } label: {
+                                Text(item.name)
+                            }
                         }
                     }
                 }

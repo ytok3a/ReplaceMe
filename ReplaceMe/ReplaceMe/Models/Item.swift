@@ -26,6 +26,23 @@ class Item {
         self.notes = notes
     }
     
+    func getReplacementDate() -> Date {
+
+        var nextReplaced: Date = Date()
+
+        if (replaceEvery.unit == .days) {
+            nextReplaced = Calendar.current.date(byAdding: .day, value: replaceEvery.value, to: lastReplaced) ?? Date() //TODO: is this correct?
+        } else if  (replaceEvery.unit == .weeks) {
+            nextReplaced = Calendar.current.date(byAdding: .weekOfYear, value: replaceEvery.value, to: lastReplaced) ?? Date()
+        } else if (replaceEvery.unit == .months) {
+            nextReplaced = Calendar.current.date(byAdding: .year, value: replaceEvery.value, to: lastReplaced) ?? Date()
+        }
+
+        return nextReplaced;
+
+    }
+
+    
     func canSave() -> Bool {
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             return false
@@ -48,6 +65,16 @@ class Item {
         return replaceEvery.inDays > remindBefore.inDays
     }
 
-    
-
 }
+
+extension Date {
+    func getAsString() -> String {
+        
+        let formatter3 = DateFormatter()
+        formatter3.dateFormat = "MMM d, y" // E,
+        return formatter3.string(from: self)
+        
+    }
+    
+}
+

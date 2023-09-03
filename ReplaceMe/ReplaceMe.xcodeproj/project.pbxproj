@@ -22,6 +22,7 @@
 		824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */; };
 		824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */; };
 		82D4AC492AA4350500CC5B03 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */; };
+		82D4AC4B2AA44E1500CC5B03 /* PresetItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
 		824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
 		82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
+		82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 				824AF8862AA365ED003BAC8E /* Item.swift */,
 				824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */,
 				824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */,
+				82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 			files = (
 				824AF8532AA36110003BAC8E /* ListView.swift in Sources */,
 				824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */,
+				82D4AC4B2AA44E1500CC5B03 /* PresetItems.swift in Sources */,
 				82D4AC492AA4350500CC5B03 /* PreviewHelpers.swift in Sources */,
 				824AF8512AA36110003BAC8E /* ReplaceMeApp.swift in Sources */,
 				824AF8812AA3650C003BAC8E /* CreateItemView.swift in Sources */,

@@ -19,16 +19,15 @@ struct CreateItemView: View {
 
     @Environment(\.modelContext) var modelContext
 
-    
     // TODO: if clicked anywhere else it should close too
     // TODO: make gramatically correct
-    // TODO: Validate if reminding before replacement
     // TODO: add years everywhere
+    // TODO: have preset autopopulate viewModel
+    // TODO: remove preset selection in this when anything changed
 
-    let presets = ["None", "🧯 Fire Extinguisher", "💧 Water Filter", "👁 Contact Lens Case", "🪥 Toothbrush", "🧽 Sponges", "🛌 Pillows", "🏠 Air Filter", "🔋 Smoke Alarm Batteries"]
-//    let preset = "None"
-    @State private var preset = "None"
 
+    @State private var preset_selection = "🧯 Fire Extinguisher"
+    
 
     var body: some View {
             
@@ -47,23 +46,17 @@ struct CreateItemView: View {
             Form {
                 
                 Section {
-
                     
                     TextField("Name", text: $item.name)
-                    //                            .textFieldStyle(DefaultTextFieldStyle())
                     
-                    
-                    // MARK: Last Replaced ///////////////////////////////////////////////////////////////////////////////////////////////////////
                     DatePicker("Last Replaced", selection: $item.lastReplaced, displayedComponents: .date)
                         .datePickerStyle(.compact)
                     
-                    // MARK: Replace Every //////////////////////////////////////////////////////////////////////////////////////////////////////
                     HStack {
                         Text("Replace Every")
                         Spacer()
                         Text("\(item.replaceEvery.value) \(item.replaceEvery.unit.rawValue)")
                     }
-                    .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation {
                             isPickerVisible.toggle()
@@ -73,14 +66,11 @@ struct CreateItemView: View {
                         DateDurationPicker(selection: $item.replaceEvery, values: Array(1..<100), units: DateDuration.Unit.allCases)
                     }
                     
-                    
-                    // MARK: Remind Me ///////////////////////////////////////////////////////////////////////////////////////////////////////////
                     HStack {
                         Text("Remind Me")
                         Spacer()
                         Text("\(item.remindBefore.value) \(item.remindBefore.unit.rawValue) before")
                     }
-                    .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation {
                             isPicker2Visible.toggle()
@@ -92,34 +82,32 @@ struct CreateItemView: View {
                     
                 }
 
-                
-                
                 Section {
-                    
-                    
                     
                     TextField("", text: $item.notes)
                         .textFieldStyle(DefaultTextFieldStyle())
                     
-                    
                 }header: {
                     Text("Notes")
                 }
-//                
+
                 Section {
                     
-                    Picker("Presets", selection: $preset) {
+                    Picker("Presets", selection: $preset_selection) {
                         ForEach(0 ..< presets.count, id: \.self) {
-                            Text(self.presets[$0])
+                            Text("\(presets[$0].icon) \(presets[$0].name)")
+                                // .tag($0)
                         }
                     }
+
+//                    .onChange(of: preset_selection) { _, _ in
+//                        print("Hello world")
+//                    }
                     
                 } header: {
                     Text("Optional")
                 }
                 
-                // TODO: have preset autopopulate viewModel
-                // TODO: remove preset selection in this when anything changed
                 
             }
 
@@ -169,11 +157,17 @@ struct CreateItemHelper: View {
 #Preview {
     NavigationStack {
         CreateItemHelper()
-    //    CreateItemView(item: Item(name: "Fire Extinguisher", icon: "🧯"))
             .modelContainer(previewContainer)
 
     }
 }
+
+
+
+//                    .onChange(of: preset_selection) { _, _ in
+//                        print(preset_selection)
+                        // TODO: get item id then item then populate curr item with new item (including none item 0)
+//                    }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
