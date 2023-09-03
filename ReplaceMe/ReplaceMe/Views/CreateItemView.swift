@@ -41,6 +41,7 @@ struct CreateItemView: View {
                 .clipShape(Circle())
                 .multilineTextAlignment(.center)
                 .onChange(of: item.icon, { oldValue, newValue in
+                    // handle only 1 emoji at a time
                     item.icon = String(item.icon.prefix(1))
                 })
             

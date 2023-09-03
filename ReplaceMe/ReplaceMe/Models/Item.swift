@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftData
+import UIKit
 
 @Model
 class Item {
@@ -66,6 +67,49 @@ class Item {
         
         return "\(y) \(m) \(w) \(d)".trimmingCharacters(in: .whitespaces)
         
+    }
+    
+    func getPercentage() -> Double {
+        var replacementDate = getReplacementDate()
+        
+        // get remaining days in replacement period
+        var timeRemainingInDays  = Calendar.current.dateComponents([.day], from: Date(), to: replacementDate)
+        timeRemainingInDays.day! += 1
+        
+        // get the total days in the replacement period
+        var repacementPeriodInDays = Calendar.current.dateComponents([.day], from: lastReplaced, to: replacementDate)
+        //        repacementPeriodInDays.day! += 1
+
+        // divide
+        var percentRemaining = Double(timeRemainingInDays.day ?? 0) / Double(repacementPeriodInDays.day ?? 1)
+        
+        return percentRemaining
+
+    }
+    
+    func getColor() -> UIColor {
+        
+        let p = getPercentage()
+        
+        if (p >= 0.9) {
+            return UIColor.green
+        } else if (p >= 0.8) {
+            return UIColor.green
+        } else if (p >= 0.6) {
+            return UIColor.yellow
+        } else if (p >= 0.5) {
+            return UIColor.yellow
+        }else if (p >= 0.35) {
+            return UIColor.orange
+        }else if (p >= 0.15) {
+            return UIColor.red
+        }else if (p >= 0.05) {
+            return UIColor.red
+        }else if (p >= 0) {
+            return UIColor.white
+        }
+                
+        return UIColor(red: 1.0 , green: 1.0, blue: 1.0, alpha: 1.0)
     }
 
     

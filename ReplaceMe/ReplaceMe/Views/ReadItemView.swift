@@ -22,13 +22,12 @@ struct ReadItemView: View {
             
         VStack {
             
-            TextField("", text: $item.icon)
+            Text("\(item.icon)")
                 .font(.system(size: 64))
                 .padding(10)
-                .background(.gray)
+                .background(Color.init(item.getColor()))
                 .clipShape(Circle())
                 .multilineTextAlignment(.center)
-                .disabled(true)
             
             Form {
                 
@@ -117,6 +116,8 @@ struct ReadItemView: View {
 
             
         }
+        
+        
                     
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {

@@ -23,9 +23,21 @@ struct ListView: View {
                         HStack {
                             
                             NavigationLink {
-                                ReadItemView(item: item)
+                                  ReadItemView(item: item)
                             } label: {
-                                Text(item.name)
+                                HStack {
+                                    
+                                    Text("\(item.icon)")
+                                        .font(.system(size: 64))
+                                        .padding(10)
+                                        .background(Color.init(item.getColor()))
+                                        .clipShape(Circle())
+                                        .multilineTextAlignment(.center)
+                                    
+                                    Text(item.name)
+
+                                }
+                                
                             }
                         }
                         .swipeActions {
@@ -54,7 +66,6 @@ struct ListView: View {
                 
                 NavigationStack {
                     CreateItemView(item: Item()) // new item
-
                 }
             }
         }
