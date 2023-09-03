@@ -27,9 +27,9 @@ class Item {
     }
     
     func getReplacementDate() -> Date {
-
+        
         var nextReplaced: Date = Date()
-
+        
         if (replaceEvery.unit == .days) {
             nextReplaced = Calendar.current.date(byAdding: .day, value: replaceEvery.value, to: lastReplaced) ?? Date() //TODO: is this correct?
         } else if  (replaceEvery.unit == .weeks) {
@@ -39,9 +39,29 @@ class Item {
         } else if (replaceEvery.unit == .years) {
             nextReplaced = Calendar.current.date(byAdding: .year, value: replaceEvery.value, to: lastReplaced) ?? Date()
         }
-
+        
         return nextReplaced;
+        
+    }
+    
+    func getRemainingTime() -> String {
+        
+        let timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
+        
+        let year = timeRemaining.year ?? 0
+        let y = (year != 0) ? "\(year)Y" : ""
+        
+        let month = timeRemaining.month ?? 0
+        let m = (month != 0) ? "\(month)M" : ""
+        
+        let week = timeRemaining.weekOfYear ?? 0
+        let w = (week != 0) ? "\(week)W" : ""
 
+        let day = timeRemaining.day ?? 0
+        let d = (day != 0) ? "\(day)D" : ""
+        
+        return "\(y) \(m) \(w) \(d)".trimmingCharacters(in: .whitespaces)
+        
     }
 
     
@@ -77,6 +97,11 @@ extension Date {
         return formatter3.string(from: self)
         
     }
+    
+//    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+//        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+//    }
+
     
 }
 

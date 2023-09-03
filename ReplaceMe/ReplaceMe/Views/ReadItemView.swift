@@ -33,8 +33,6 @@ struct ReadItemView: View {
                 Section {
                     
                     HStack {
-//                        Text("Name")
-//                        Spacer()
                         Text("\(item.name)")
                     }
                     
@@ -42,7 +40,6 @@ struct ReadItemView: View {
                         HStack {
                             Text("\(item.notes)")
                         }
-                        
                     }
 
 
@@ -94,7 +91,7 @@ struct ReadItemView: View {
                     HStack {
                         Text("Time Remaining")
                         Spacer()
-                        // Text("3 days") // TODO: hardcoded
+                        Text("\(item.getRemainingTime())")
                     }
                     .disabled(true)
 
