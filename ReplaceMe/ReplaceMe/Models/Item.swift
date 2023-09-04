@@ -16,17 +16,32 @@ class Item {
     var lastReplaced: Date
     var replaceEvery: DateDuration
     var remindBefore: DateDuration
-    var notes: String
     
+    
+    var notes: String
+    var category: String
+    var action: String
+
+    
+    // TODO: eventually turn into a subclass
+    // TODO: add bool to see if it is editable, true by default on init
+    // TODO: add disclaimer as well, with year
+    
+    var disclaimer: String
+
+
     // TODO: SORT BY getReplacementDate()
     
-    init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "") {
+    init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "", category: String = "", disclaimer: String = "", action: String = "Replace") {
         self.name = name
         self.icon = icon
         self.lastReplaced = lastReplaced
         self.replaceEvery = replaceEvery
         self.remindBefore = remindBefore
         self.notes = notes
+        self.category = category
+        self.disclaimer = disclaimer
+        self.action = action
     }
     
     func getReplacementDate() -> Date {

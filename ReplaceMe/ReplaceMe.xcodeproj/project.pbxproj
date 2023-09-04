@@ -60,6 +60,7 @@
 		824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationDatePicker.swift; sourceTree = "<group>"; };
 		824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
 		824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		82D0F1282AA548D300BC023E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +113,7 @@
 		824AF84F2AA36110003BAC8E /* ReplaceMe */ = {
 			isa = PBXGroup;
 			children = (
+				82D0F1282AA548D300BC023E /* Info.plist */,
 				824AF87D2AA363C1003BAC8E /* Other */,
 				824AF87C2AA363B0003BAC8E /* Models */,
 				824AF87B2AA3639B003BAC8E /* ViewModels */,
@@ -490,6 +492,7 @@
 				DEVELOPMENT_TEAM = UR545J8GKZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReplaceMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ReplaceMe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -521,6 +524,7 @@
 				DEVELOPMENT_TEAM = UR545J8GKZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ReplaceMe/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ReplaceMe;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
