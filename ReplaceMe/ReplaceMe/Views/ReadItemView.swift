@@ -14,7 +14,6 @@ struct ReadItemView: View {
     @State var item: Item
     
     @State private var showingAlert = false
-    
     @State private var sheetIsPresented = false
 
     
@@ -42,6 +41,7 @@ struct ReadItemView: View {
                                 .padding([.bottom], 0.01)
 
                             
+                            // TODO: change to type from item
                             Button("Replace Me") {
                                 showingAlert = true
                             }
@@ -84,7 +84,14 @@ struct ReadItemView: View {
 
                 } header: {
                     Text("Settings")
+                } footer: {
+                    
+                    // TODO: add if statement, if type is PresetItem
+                    Text("\(item.disclaimer)[Read more...](\(item.link))")
+
                 }
+                
+
 
 //                Section {
 //                    

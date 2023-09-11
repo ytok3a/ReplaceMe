@@ -28,11 +28,13 @@ class Item {
     // TODO: add disclaimer as well, with year
     
     var disclaimer: String
+    var link: String
+
 
 
     // TODO: SORT BY getReplacementDate()
     
-    init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "", category: String = "", disclaimer: String = "", action: String = "Replace") {
+    init(name: String = "", icon: String = "♻️", lastReplaced: Date = Date(), replaceEvery: DateDuration = DateDuration(value: 2, unit: .weeks), remindBefore: DateDuration = DateDuration(value: 1, unit: .days), notes: String = "", category: String = "", disclaimer: String = "", action: String = "Replace", link: String = "") {
         self.name = name
         self.icon = icon
         self.lastReplaced = lastReplaced
@@ -42,6 +44,7 @@ class Item {
         self.category = category
         self.disclaimer = disclaimer
         self.action = action
+        self.link = link
     }
     
     func getReplacementDate() -> Date {

@@ -55,7 +55,9 @@ let item8: Item = Item(name: "Smoke Alarm Batteries",
                        replaceEvery: DateDuration(value: 1, unit: .years),
                        remindBefore: DateDuration(value: 1, unit: .weeks),
                        notes: "",
-                       category: "")
+                       category: "",
+                       disclaimer: "The National Fire Protection Association (NFPA) recommends changing the batteries in your smoke detectors every year. ",
+                       link: "https://www.nfpa.org/News-and-Research/Publications-and-media/Blogs-Landing-Page/Safety-Source/Blog-Posts/2022/03/11/Change-your-clocks-check-your-smoke-alarm-batteries#:~:text=Smoke%20alarms%20with%20non%2Dreplaceable,at%20least%20once%20a%20year.")
 
 let presets = [item0, item1, item2, item3, item4, item5, item6, item7, item8]
 
