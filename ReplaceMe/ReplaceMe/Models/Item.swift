@@ -77,10 +77,29 @@ class Item {
         let day = timeRemaining.day ?? 0
         
         // get singular unit and value (rounded up)
-        var value: Int
-        var unit: String
-
-        if (year > 0 || month >= 4) {
+        var value: Int = 0
+        var unit: String = ""
+        
+        var isOverdue = ""
+        
+        /// TODO: if any of them are negative, say that they are that time unit overdue
+        if (year < 0 || month < 0 || week < 0 || day < 0 ) {
+            isOverdue = " overdue"
+            
+            if (year < 0) {
+                value = year*(-1)
+                unit = "years"
+            } else if (month < 0) {
+                value = month*(-1)
+                unit = "months"
+            } else if (week < 0) {
+                value = week*(-1)
+                unit = "weeks"
+            } else if (day < 0) {
+                value = day*(-1)
+                unit = "days"
+            }
+        } else if (year > 0 || month >= 4) {
             value = year
             if (month >= 4) {
                 value += 1
@@ -109,7 +128,27 @@ class Item {
             x.removeLast()
         }
         
+        x = x + isOverdue
+        
         return x
+        
+    }
+    
+    func isOverdue() -> Bool {
+        
+        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
+        timeRemaining.day! += 1
+
+        let year = timeRemaining.year ?? 0
+        let month = timeRemaining.month ?? 0
+        let week = timeRemaining.weekOfYear ?? 0
+        let day = timeRemaining.day ?? 0
+
+        if (year < 0 || month < 0 || week < 0 || day < 0 ) {
+            return true
+        } else {
+            return false
+        }
         
     }
     

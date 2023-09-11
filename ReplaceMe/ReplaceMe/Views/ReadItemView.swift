@@ -40,17 +40,16 @@ struct ReadItemView: View {
                             Text("\(item.name)")
                                 .padding([.bottom], 0.01)
 
-                            
-                            // TODO: change to type from item
-                            Button("Replace Me") {
+                            Button(action: {
                                 showingAlert = true
+                            }) {
+                                Text("Replace Me")
                             }
-                            .font(.system(size: 16, design: .default))
-
+                            
                         }
+                        
                         Spacer()
                         
-
                     }
                 }
                 .listRowBackground(Color.clear)
@@ -87,7 +86,7 @@ struct ReadItemView: View {
                 } footer: {
                     
                     // TODO: add if statement, if type is PresetItem
-                    Text("\(item.disclaimer)[Read more...](\(item.link))")
+                    Text("\(item.disclaimer) [Read more...](\(item.link))")
 
                 }
                 
@@ -207,6 +206,5 @@ struct ReadItemHelper: View {
     NavigationStack {
         ReadItemHelper()
             .modelContainer(previewContainer)
-
     }
 }

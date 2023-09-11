@@ -190,15 +190,12 @@ struct CreateItemHelper: View {
             Text("no date")
         }
     }
-
-    
 }
 
 #Preview {
     NavigationStack {
         CreateItemHelper()
             .modelContainer(previewContainer)
-
     }
 }
 

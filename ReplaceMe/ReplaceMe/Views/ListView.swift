@@ -33,8 +33,9 @@ struct ListView: View {
                                         Text(item.name)
 //                                            .fontWeight(.bold)
                                         Text(item.getRemainingTimeAsString())
-                                            .font(.subheadline).foregroundColor(.gray)
-//                                            .fontWeight(.regular)
+                                            .font(.subheadline)
+                                            .foregroundColor(item.isOverdue() ? .red : .gray)
+
                                     }
                                     .padding([.leading], 5)
                                     
