@@ -1,10 +1,5 @@
-<p align="center">
-  <a href="">
-    <img alt="Version" src="https://i.postimg.cc/K8Q92LK4/replace-me-logo.png" height="50px"/>
-  </a>
-</p>
 <h1 align="center">
-  Replace Me
+  :recycle: <br> Replace Me
 </h1>
 
 <p align="center">
@@ -30,9 +25,9 @@
   </a>
 </p>
 
-## ✅ Roadmap
+## :white_check_mark: Roadmap
 
-#### High
+#### :red_circle: High
 
 - [ ] Implement Notifications
 - [ ] Implement Limit Items
@@ -41,14 +36,14 @@
 - [ ] App Icon Badge for Total Items Needing Replacement
 - [ ] Add "According to ..." for Presets
 
-#### Medium
+#### :orange_circle: Medium 
 
 - [ ] Preset Items Page
 - [ ] Icon to Indicate Preset
 - [ ] Make Preset Attributes Un-editable
 - [ ] Actions for Items (Optional)
 
-#### Low
+#### :yellow_circle: Low
 
 - [ ] Fun Facts
 - [ ] Recyling Tips for Presets
