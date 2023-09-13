@@ -15,10 +15,6 @@ struct ReadItemView: View {
     
     @State private var showingAlert = false
     @State private var sheetIsPresented = false
-
-    
-    // TODO: add changes from create view here
-
     
     var body: some View {
         
@@ -53,11 +49,9 @@ struct ReadItemView: View {
                     }
                 }
                 .listRowBackground(Color.clear)
-                // TODO: shrink space above emoji
 
                 
                 Section {
-                    
                     
                     HStack {
                         Text("Last Replaced")
@@ -90,17 +84,6 @@ struct ReadItemView: View {
 
                 }
                 
-
-
-//                Section {
-//                    
-//                    TextField("", text: $item.notes)
-//                        .textFieldStyle(DefaultTextFieldStyle())
-//                        .disabled(true)
-//                    
-//                }header: {
-//                    Text("Notes")
-//                }
                 
                 Section {
                     
@@ -126,14 +109,20 @@ struct ReadItemView: View {
                 }
                 
                 
-//                Button("Replace Me", systemImage: "arrow.clockwise") {
-//                    showingAlert = true
-//                }
-                
+                Section {
+                    
+                    TextField("", text: $item.notes)
+                        .textFieldStyle(DefaultTextFieldStyle())
+                        .disabled(true)
+                        .foregroundColor(.gray)
+                    
+                }header: {
+                    Text("Notes")
+                }
+                                
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Replace This Item?"),
                           // message: Text("You can always "),
-                          // TODO: add a message if they still have a few days left
                           primaryButton: .default(Text("OK")) {
                             item.lastReplaced = Date()
                           },
@@ -157,19 +146,11 @@ struct ReadItemView: View {
             }
 
         }
-        
-//        .navigationBarTitle("\(item.name)")
-
-        
-//        .navigationBarHidden(true)
                     
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("Edit") {
-                                        
                     sheetIsPresented.toggle()
-
-                    // TODO: edit, remove .cancel
                 }
             }
             

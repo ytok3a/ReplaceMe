@@ -16,11 +16,11 @@
 		824AF86E2AA36112003BAC8E /* ReplaceMeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF86D2AA36112003BAC8E /* ReplaceMeUITestsLaunchTests.swift */; };
 		824AF8812AA3650C003BAC8E /* CreateItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8802AA3650C003BAC8E /* CreateItemView.swift */; };
 		824AF8832AA36522003BAC8E /* ReadItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8822AA36522003BAC8E /* ReadItemView.swift */; };
-		824AF8852AA36594003BAC8E /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8842AA36594003BAC8E /* ItemView.swift */; };
 		824AF8872AA365ED003BAC8E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8862AA365ED003BAC8E /* Item.swift */; };
 		824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */; };
 		824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */; };
 		824AF8952AA3A04E003BAC8E /* EmojiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */; };
+		827D5A8E2AB1643700DA447A /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827D5A8D2AB1643700DA447A /* ItemTests.swift */; };
 		82D4AC492AA4350500CC5B03 /* PreviewHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */; };
 		82D4AC4B2AA44E1500CC5B03 /* PresetItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */; };
 /* End PBXBuildFile section */
@@ -55,11 +55,11 @@
 		824AF86D2AA36112003BAC8E /* ReplaceMeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceMeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		824AF8802AA3650C003BAC8E /* CreateItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItemView.swift; sourceTree = "<group>"; };
 		824AF8822AA36522003BAC8E /* ReadItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemView.swift; sourceTree = "<group>"; };
-		824AF8842AA36594003BAC8E /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		824AF8862AA365ED003BAC8E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		824AF8902AA37E16003BAC8E /* DurationDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationDatePicker.swift; sourceTree = "<group>"; };
 		824AF8922AA3965C003BAC8E /* UIEmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEmojiTextField.swift; sourceTree = "<group>"; };
 		824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiTextField.swift; sourceTree = "<group>"; };
+		827D5A8D2AB1643700DA447A /* ItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
 		82D0F1282AA548D300BC023E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		82D4AC482AA4350500CC5B03 /* PreviewHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewHelpers.swift; sourceTree = "<group>"; };
 		82D4AC4A2AA44E1500CC5B03 /* PresetItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetItems.swift; sourceTree = "<group>"; };
@@ -136,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				824AF8612AA36112003BAC8E /* ReplaceMeTests.swift */,
+				827D5A8D2AB1643700DA447A /* ItemTests.swift */,
 			);
 			path = ReplaceMeTests;
 			sourceTree = "<group>";
@@ -155,7 +156,6 @@
 				824AF8522AA36110003BAC8E /* ListView.swift */,
 				824AF8802AA3650C003BAC8E /* CreateItemView.swift */,
 				824AF8822AA36522003BAC8E /* ReadItemView.swift */,
-				824AF8842AA36594003BAC8E /* ItemView.swift */,
 				824AF8942AA3A04E003BAC8E /* EmojiTextField.swift */,
 			);
 			path = Views;
@@ -325,7 +325,6 @@
 				824AF8512AA36110003BAC8E /* ReplaceMeApp.swift in Sources */,
 				824AF8812AA3650C003BAC8E /* CreateItemView.swift in Sources */,
 				824AF8932AA3965C003BAC8E /* UIEmojiTextField.swift in Sources */,
-				824AF8852AA36594003BAC8E /* ItemView.swift in Sources */,
 				824AF8912AA37E16003BAC8E /* DurationDatePicker.swift in Sources */,
 				824AF8872AA365ED003BAC8E /* Item.swift in Sources */,
 				824AF8832AA36522003BAC8E /* ReadItemView.swift in Sources */,
@@ -336,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				827D5A8E2AB1643700DA447A /* ItemTests.swift in Sources */,
 				824AF8622AA36112003BAC8E /* ReplaceMeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

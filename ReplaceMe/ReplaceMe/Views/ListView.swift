@@ -42,18 +42,6 @@ struct ListView: View {
                                     Spacer()
                                 }
                                 
-                                
-//                                .background(Color.init(item.getColor()))
-
-                                
-                                
-                                
-                                
-                                
-                                
-                                
-
-
                             }
                         }
                         .swipeActions {
@@ -69,18 +57,13 @@ struct ListView: View {
             .navigationTitle("Your Items")
             .toolbar {
                 Button {
-//                    CreateItemView(item: item())
                     sheetIsPresented.toggle()
-//                    viewModel.showingCreateItemView = true
                 } label: {
                     Image(systemName: "plus")
                 }
             }
-            
-// TODO: this still might be needed
-            
+                        
             .sheet(isPresented: $sheetIsPresented) {
-                
                 NavigationStack {
                     CreateItemView(item: Item()) // new item
                 }

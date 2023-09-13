@@ -65,11 +65,26 @@ class Item {
         
     }
     
+    func getRemainingTime() -> DateComponents {
+        
+        // MARK: note that items go from "1 day remaining" to "1 day overdue"
+        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
+
+        
+        // TODO: implement
+        
+        return timeRemaining
+        
+    }
+
+    
     func getRemainingTimeAsString() -> String {
+        
+        // todo: make a remaining time functino
         
         var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
         timeRemaining.day! += 1
-        print("timeRemaining: \(timeRemaining)")
+//        print("timeRemaining for \(name): \(timeRemaining)")
 
         let year = timeRemaining.year ?? 0
         let month = timeRemaining.month ?? 0
@@ -83,6 +98,7 @@ class Item {
         var isOverdue = ""
         
         /// TODO: if any of them are negative, say that they are that time unit overdue
+        /// TODO: or if they are all zero, move the date up by 1 day (negative)
         if (year < 0 || month < 0 || week < 0 || day < 0 ) {
             isOverdue = " overdue"
             
@@ -138,6 +154,8 @@ class Item {
         
         var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
         timeRemaining.day! += 1
+        
+//        print("  (checking overdue...) timeRemaining for \(name): \(timeRemaining)")
 
         let year = timeRemaining.year ?? 0
         let month = timeRemaining.month ?? 0
@@ -152,49 +170,6 @@ class Item {
         
     }
     
-    func getPercentage() -> Double {
-        let replacementDate = getReplacementDate()
-        
-        // get remaining days in replacement period
-        var timeRemainingInDays  = Calendar.current.dateComponents([.day], from: Date(), to: replacementDate)
-        timeRemainingInDays.day! += 1
-        
-        // get the total days in the replacement period
-        let repacementPeriodInDays = Calendar.current.dateComponents([.day], from: lastReplaced, to: replacementDate)
-        //        repacementPeriodInDays.day! += 1
-
-        // divide
-        let percentRemaining = Double(timeRemainingInDays.day ?? 0) / Double(repacementPeriodInDays.day ?? 1)
-        
-        return percentRemaining
-
-    }
-    
-    func getColor() -> UIColor {
-        
-        let p = getPercentage()
-        
-        if (p >= 0.9) {
-            return UIColor.green
-        } else if (p >= 0.8) {
-            return UIColor.green
-        } else if (p >= 0.6) {
-            return UIColor.yellow
-        } else if (p >= 0.5) {
-            return UIColor.yellow
-        }else if (p >= 0.35) {
-            return UIColor.orange
-        }else if (p >= 0.15) {
-            return UIColor.red
-        }else if (p >= 0.05) {
-            return UIColor.red
-        }else if (p >= 0) {
-            return UIColor.white
-        }
-                
-        return UIColor(red: 1.0 , green: 1.0, blue: 1.0, alpha: 1.0)
-    }
-
     func isNameUnique(items: [Item]) -> Bool {
         
         // TODO: implement this

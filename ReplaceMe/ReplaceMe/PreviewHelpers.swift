@@ -15,32 +15,22 @@ let previewContainer: ModelContainer = {
         Task { @MainActor in
             let context = container.mainContext
             
-            let item = Item(name: "Smoke Alarm Batteries",
-                            icon: "🔋",
-                            lastReplaced: Date(),
-                            replaceEvery: DateDuration(value: 1, unit: .years),
-                            remindBefore: DateDuration(value: 1, unit: .weeks),
-                            notes: "",
-                            category: "",
-                            disclaimer: "The National Fire Protection Association (NFPA) recommends changing the batteries in your smoke detectors every year (2022).",
-                            link: "https://www.nfpa.org/News-and-Research/Publications-and-media/Blogs-Landing-Page/Safety-Source/Blog-Posts/2022/03/11/Change-your-clocks-check-your-smoke-alarm-batteries#:~:text=Smoke%20alarms%20with%20non%2Dreplaceable,at%20least%20once%20a%20year.")
-            context.insert(item)
-            
-            let item2 = Item(name: "Smoke Alarm Batteries 222",
-                            icon: "🔋",
-                            lastReplaced: Date(),
-                            replaceEvery: DateDuration(value: 1, unit: .years),
-                            remindBefore: DateDuration(value: 1, unit: .weeks),
-                            notes: "",
-                            category: "",
-                            disclaimer: "The National Fire Protection Association (NFPA) recommends changing the batteries in your smoke detectors every year (2022).",
-                            link: "https://www.nfpa.org/News-and-Research/Publications-and-media/Blogs-Landing-Page/Safety-Source/Blog-Posts/2022/03/11/Change-your-clocks-check-your-smoke-alarm-batteries#:~:text=Smoke%20alarms%20with%20non%2Dreplaceable,at%20least%20once%20a%20year.")
+            // MARK: added presets
+            for item in presets {
+                context.insert(item)
+            }
 
-            
-//            let item2 = Item(name: "Toothbrush", icon: "🪥", lastReplaced: Calendar(identifier: .iso8601).date(byAdding: .weekOfYear, value: -1, to: Date())!
-//)
+            let item1 = Item(name: "Pill Container",
+                            icon: "💊",
+                            lastReplaced: Calendar.current.date(byAdding: .day, value: -8, to: Date()) ?? Date() ,
+                            replaceEvery: DateDuration(value: 1, unit: .weeks))
+            context.insert(item1)
+
+            let item2 = Item(name: "Lightbulb",
+                            icon: "💡",
+                            lastReplaced: Calendar.current.date(byAdding: .day, value: -3, to: Date()) ?? Date() ,
+                            replaceEvery: DateDuration(value: 1, unit: .weeks))
             context.insert(item2)
-
 
         }
         
@@ -50,3 +40,5 @@ let previewContainer: ModelContainer = {
     }
     
 }()
+
+

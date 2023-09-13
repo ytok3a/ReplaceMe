@@ -21,11 +21,6 @@ struct CreateItemView: View {
     @Query var items: [Item] // for
     @Environment(\.modelContext) var modelContext
 
-    // TODO: promt emoji keyboard
-    // TODO: if clicked anywhere else it should close too
-    // TODO: make gramatically correct
-    // TODO: remove preset selection in this when anything changed
-
     @State private var preset_selection = 0
 
 
@@ -33,25 +28,9 @@ struct CreateItemView: View {
             
         VStack {
             
-//            TextField("", text: $item.icon)
-//                .font(.system(size: 64))
-//                .padding(10)
-//                .background(.gray)
-//                .clipShape(Circle())
-//                .multilineTextAlignment(.center)
-//                .onChange(of: item.icon, { oldValue, newValue in
-//                    // handle only 1 emoji at a time
-//                    item.icon = String(item.icon.prefix(1))
-//                })
-            
-            
-            
             Form {
-
-                
                 
                 Section {
-                    
                     
                     TextField("", text: $item.icon)
                         .font(.system(size: 64))
@@ -67,8 +46,6 @@ struct CreateItemView: View {
                     
                 }
                 .listRowBackground(Color.clear)
-
-                
                 
                 Section {
                     
@@ -87,7 +64,8 @@ struct CreateItemView: View {
                     
                     DatePicker("Last Replaced", selection: $item.lastReplaced, displayedComponents: .date)
                         .datePickerStyle(.compact)
-                    
+            
+                    // DurationDatePicker 1
                     HStack {
                         Text("Replace Every")
                         Spacer()
@@ -103,12 +81,11 @@ struct CreateItemView: View {
                         DateDurationPicker(selection: $item.replaceEvery, values: Array(1..<100), units: DateDuration.Unit.allCases)
                     }
                     
+                    // DurationDatePicker 2
                     HStack {
                         Text("Remind Me")
                         Spacer()
                         Text("\(item.remindBefore.asString()) before")
-
-                        
                     }
                     .onTapGesture {
                         withAnimation {
@@ -124,6 +101,7 @@ struct CreateItemView: View {
                 }
 
 
+                // TODO: move this to a list view
                 Section {
                     
                     Picker("Presets", selection: $preset_selection) {
@@ -135,9 +113,9 @@ struct CreateItemView: View {
                     .onChange(of: preset_selection) { _, _ in
                         print("Hello \(preset_selection)")
                         print("This is \(presets[preset_selection])")
-//                        if (preset_selection != 0) {
+                        // if (preset_selection != 0) {
                             item = presets[preset_selection]
-//                        }
+                        // }
                         
                     }
                     
@@ -174,6 +152,7 @@ struct CreateItemView: View {
             }
             
         }
+        .scrollDismissesKeyboard(.interactively)
     }
 
     
@@ -198,30 +177,3 @@ struct CreateItemHelper: View {
             .modelContainer(previewContainer)
     }
 }
-
-
-
-//                    .onChange(of: preset_selection) { _, _ in
-//                        print(preset_selection)
-                        // TODO: get item id then item then populate curr item with new item (including none item 0)
-//                    }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//        .scrollDismissesKeyboard(.interactively)
-
-
-//    }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-

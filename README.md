@@ -39,7 +39,7 @@
 
 #### :orange_circle: Medium
 
-- [ ] Preset Items Page
+- [ ] Move Presets to Own List View Page
   - [ ] Should only edit rep_date and name
   - [ ] Adding preset duplicates ( #1, #2, etc...)
   - [ ] Wait 5 seconds to add same preset again
@@ -55,6 +55,10 @@
 - [ ] Mileage Since Last Replacement
 - [ ] Creating vehicles and attaching them to items to replace
 - [ ] Protocol for changing recommended to replace (if future changes)
+- [ ] Prompt emoji keyboard
+- [ ] Duration date picker should collapse when clicking anywhere else
+- [ ] Add an extra message if they're replacing and still have a few days left
+- [ ] "1 Day Left" should be "X hours left"
 
 ## :beetle: Known Issues
 
