@@ -32,7 +32,7 @@
 
 ## ✅ Roadmap
 
-#### High
+#### 🔴 High
 
 - [ ] Implement Notifications
 - [ ] Implement Limit Items
@@ -41,15 +41,16 @@
 - [ ] App Icon Badge for Total Items Needing Replacement
 - [ ] Add "According to ..." for Presets
 
-#### Medium
+#### 🟠 Medium
 
 - [ ] Preset Items Page
 - [ ] Icon to Indicate Preset
 - [ ] Make Preset Attributes Un-editable
 - [ ] Actions for Items (Optional)
 
-#### Low
+#### 🟡 Low
 
 - [ ] Fun Facts
 - [ ] Recyling Tips for Presets
 - [ ] Replacement History
+- [ ] Update Logo
