@@ -59,5 +59,3 @@
 ## :beetle: Known Issues
 
 - [ ] Item creation name duplication error
-- [ ] 
-
