@@ -48,31 +48,27 @@ class Item {
     }
     
     func getReplacementDate() -> Date {
-        
-        var nextReplaced: Date = Date()
-        
+                
         if (replaceEvery.unit == .days) {
-            nextReplaced = Calendar.current.date(byAdding: .day, value: replaceEvery.value, to: lastReplaced) ?? Date() //TODO: is this correct?
+            return Calendar.current.date(byAdding: .day, value: replaceEvery.value, to: lastReplaced) ?? Date()
         } else if  (replaceEvery.unit == .weeks) {
-            nextReplaced = Calendar.current.date(byAdding: .weekOfYear, value: replaceEvery.value, to: lastReplaced) ?? Date()
+            return Calendar.current.date(byAdding: .weekOfYear, value: replaceEvery.value, to: lastReplaced) ?? Date()
         } else if (replaceEvery.unit == .months) {
-            nextReplaced = Calendar.current.date(byAdding: .month, value: replaceEvery.value, to: lastReplaced) ?? Date()
+            return Calendar.current.date(byAdding: .month, value: replaceEvery.value, to: lastReplaced) ?? Date()
         } else if (replaceEvery.unit == .years) {
-            nextReplaced = Calendar.current.date(byAdding: .year, value: replaceEvery.value, to: lastReplaced) ?? Date()
+            return Calendar.current.date(byAdding: .year, value: replaceEvery.value, to: lastReplaced) ?? Date()
+        } else {
+            print("ERROR in \(name).getReplacementDate()")
+            return Date() // TODO: throw error
         }
-        
-        return nextReplaced;
-        
+                
     }
     
-    func getRemainingTime() -> DateComponents {
+    func getRemainingTime(currDate: Date = Date()) -> DateComponents {
         
-        // MARK: note that items go from "1 day remaining" to "1 day overdue"
-        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
-
-        
-        // TODO: implement
-        
+        // note that items go from "1 day remaining" to "replace today" to "1 day overdue"
+        let replacementDate = getReplacementDate()
+        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: currDate, to: replacementDate)
         return timeRemaining
         
     }
