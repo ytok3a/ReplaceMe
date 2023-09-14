@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821A6A272AB3716C00C205AD /* ItemIsOverdueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A6A262AB3716C00C205AD /* ItemIsOverdueTests.swift */; };
+		821A6A292AB373CD00C205AD /* ItemIsNameUniqueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A6A282AB373CD00C205AD /* ItemIsNameUniqueTests.swift */; };
 		824AF8512AA36110003BAC8E /* ReplaceMeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8502AA36110003BAC8E /* ReplaceMeApp.swift */; };
 		824AF8532AA36110003BAC8E /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824AF8522AA36110003BAC8E /* ListView.swift */; };
 		824AF8552AA36111003BAC8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 824AF8542AA36111003BAC8E /* Assets.xcassets */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		821A6A262AB3716C00C205AD /* ItemIsOverdueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIsOverdueTests.swift; sourceTree = "<group>"; };
+		821A6A282AB373CD00C205AD /* ItemIsNameUniqueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemIsNameUniqueTests.swift; sourceTree = "<group>"; };
 		824AF84D2AA36110003BAC8E /* ReplaceMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReplaceMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		824AF8502AA36110003BAC8E /* ReplaceMeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceMeApp.swift; sourceTree = "<group>"; };
 		824AF8522AA36110003BAC8E /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				827D5A8F2AB295FD00DA447A /* ItemGetReplacementDateTests.swift */,
 				827D5A912AB2B99000DA447A /* ItemGetRemainingTimeTests.swift */,
 				827D5A932AB2C8D800DA447A /* ItemGetRemainingTimeString.swift */,
+				821A6A262AB3716C00C205AD /* ItemIsOverdueTests.swift */,
+				821A6A282AB373CD00C205AD /* ItemIsNameUniqueTests.swift */,
 			);
 			path = ReplaceMeTests;
 			sourceTree = "<group>";
@@ -345,6 +351,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				827D5A902AB295FD00DA447A /* ItemGetReplacementDateTests.swift in Sources */,
+				821A6A272AB3716C00C205AD /* ItemIsOverdueTests.swift in Sources */,
+				821A6A292AB373CD00C205AD /* ItemIsNameUniqueTests.swift in Sources */,
 				827D5A942AB2C8D800DA447A /* ItemGetRemainingTimeString.swift in Sources */,
 				827D5A922AB2B99000DA447A /* ItemGetRemainingTimeTests.swift in Sources */,
 				827D5A8E2AB1643700DA447A /* ItemTests.swift in Sources */,

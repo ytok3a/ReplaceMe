@@ -43,6 +43,8 @@ final class ItemGetRemainingTimeString: XCTestCase {
         XCTAssertEqual(actualOutput, "1 week overdue")
     }
     
+    // CASE: rounding feature
+
     func test4() throws {
         // arrange
         let lastReplaced = Date(timeIntervalSince1970: TimeInterval(1694030400)) // 2023-09-06 3PM
@@ -60,10 +62,7 @@ final class ItemGetRemainingTimeString: XCTestCase {
         // act
         // assert
     }
-    
-    // test rounding feature
-    
-    
+        
     // 2 years left
     // 1 year left
     // 2 months left

@@ -126,10 +126,8 @@ struct CreateItemView: View {
                 
             }
 
-            
         }
         
-                    
         .toolbar {
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") {
@@ -142,6 +140,7 @@ struct CreateItemView: View {
                 }
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Error"), message: Text("Please make sure to fill in all fields, select a replaced date that is before or on today, and set a reminder that happens before replacement."))
+                    // TODO: get messages from canSave(),
                 }
 
             }

@@ -145,23 +145,9 @@ class Item {
                 
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // not tested yet
-    
-    func isOverdue() -> Bool {
+    func isOverdue(currDate: Date = Date()) -> Bool {
         
-        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
-        timeRemaining.day! += 1
-        
-//        print("  (checking overdue...) timeRemaining for \(name): \(timeRemaining)")
+        let timeRemaining = getRemainingTime(currDate: currDate)
 
         let year = timeRemaining.year ?? 0
         let month = timeRemaining.month ?? 0
@@ -177,35 +163,47 @@ class Item {
     }
     
     func isNameUnique(items: [Item]) -> Bool {
-        
-        // TODO: implement this
+        for item in items {
+            if (name == item.name) {
+                return false
+            }
+        }
         return true
     }
     
-    
+    func isValidReminder() -> Bool {
+        // TODO: create test cases
+        return replaceEvery.inDays > remindBefore.inDays
+    }
+
     func canSave(items: [Item]) -> Bool {
+        
+        // TODO: send message too
+        
         guard !name.trimmingCharacters(in: .whitespaces).isEmpty else {
             return false
+            // "Enter an item name."
         }
 
         guard isValidReminder() else {
             return false
+            // "Reminders must be set earlier than replacement."
         }
 
         guard lastReplaced <= Date() else {
             return false
+            // "The last time you replaced this can't be after today."
         }
 
         guard isNameUnique(items: items) else {
             return false
+            // "This item name already exists"
+            // TODO: make sure that created item is not in items list to compare
         }
 
         return true;
     }
     
-    func isValidReminder() -> Bool {
-        return replaceEvery.inDays > remindBefore.inDays
-    }
 
 }
 
@@ -217,11 +215,6 @@ extension Date {
         return formatter3.string(from: self)
         
     }
-    
-//    static func - (lhs: Date, rhs: Date) -> TimeInterval {
-//        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
-//    }
-
-    
+        
 }
 

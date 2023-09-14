@@ -49,17 +49,20 @@
 
 #### :yellow_circle: Low
 
-- [ ] Fun Facts
-- [ ] Recyling Tips for Presets
-- [ ] Replacement History
-- [ ] Mileage Since Last Replacement
-- [ ] Creating vehicles and attaching them to items to replace
 - [ ] Protocol for changing recommended to replace (if future changes)
 - [ ] Prompt emoji keyboard
 - [ ] Duration date picker should collapse when clicking anywhere else
-- [ ] Add an extra message if they're replacing and still have a few days left
-- [ ] "1 Day Left" should be "X hours left"
 
 ## :beetle: Known Issues
 
 - [ ] Item creation name duplication error
+
+## :pencil: Backlog Features
+
+- [ ] "1 Day Left" should be "X hours left"
+- [ ] Add an extra message if they're replacing and still have a few days left
+- [ ] Creating vehicles and attaching them to items to replace
+- [ ] Mileage Since Last Replacement
+- [ ] Replacement History
+- [ ] Recyling Tips for Presets
+- [ ] Fun Facts
