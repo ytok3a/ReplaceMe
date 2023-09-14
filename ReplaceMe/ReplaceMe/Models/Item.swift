@@ -204,6 +204,27 @@ class Item {
         return true;
     }
     
+    
+    func getReminderDate() -> Date {
+        // TODO: create unit tests
+        
+        let replacementDate = getReplacementDate()
+        
+        if (remindBefore.unit == .days) {
+            return Calendar.current.date(byAdding: .day, value: (-1)*remindBefore.value, to: replacementDate) ?? Date()
+        } else if  (remindBefore.unit == .weeks) {
+            return Calendar.current.date(byAdding: .weekOfYear, value: (-1)*remindBefore.value, to: replacementDate) ?? Date()
+        } else if (remindBefore.unit == .months) {
+            return Calendar.current.date(byAdding: .month, value: (-1)*remindBefore.value, to: replacementDate) ?? Date()
+        } else if (remindBefore.unit == .years) {
+            return Calendar.current.date(byAdding: .year, value: (-1)*remindBefore.value, to: replacementDate) ?? Date()
+        } else {
+            print("ERROR in \(name).getReminderDate()")
+            return Date() // TODO: throw error
+        }
+        // TODO: similar logic in getReplacementDate, consider abstracting to addition/subtraction method
+                
+    }
 
 }
 

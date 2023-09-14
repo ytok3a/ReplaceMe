@@ -8,7 +8,29 @@
 import SwiftUI
 import SwiftData
 
+func requestAuthorization() -> Void {
+    let center = UNUserNotificationCenter.current()
+    
+    center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+        
+        if let error = error {
+            // Handle the error here.
+        }
+        
+        // Enable or disable features based on the authorization.
+        print("accessGranted? \(granted)")
+        return
+    }
+    
+}
+
 struct ListView: View {
+    
+    init() {
+        requestAuthorization()
+        // TODO: maybe initialize vars before body
+    }
+    
     @State private var sheetIsPresented = false
 
     @Query var items: [Item]
@@ -81,3 +103,4 @@ struct ListView: View {
         .modelContainer(previewContainer)
 
 }
+

@@ -30,6 +30,7 @@
 #### :red_circle: High
 
 - [ ] Implement Notifications
+  - [ ] Handle if notification access is removed/added again
 - [ ] Implement Limit Items
 - [ ] Implement Purchase Subscription
 - [ ] Implement iCloud Storage
@@ -52,6 +53,7 @@
 - [ ] Protocol for changing recommended to replace (if future changes)
 - [ ] Prompt emoji keyboard
 - [ ] Duration date picker should collapse when clicking anywhere else
+- [ ] Hide remind me row if permission not granted
 
 ## :beetle: Known Issues
 
@@ -66,3 +68,4 @@
 - [ ] Replacement History
 - [ ] Recyling Tips for Presets
 - [ ] Fun Facts
+- [ ] Initial instruction views (including permissions)
