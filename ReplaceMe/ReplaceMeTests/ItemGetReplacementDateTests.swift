@@ -69,13 +69,6 @@ final class ItemGetReplacementDateTests: XCTestCase {
         XCTAssertEqual(actualOutput, expectedOutput)
     }
 
-    
-    func test_() throws {
-        // arrange
-        // act
-        // assert
-    }
-
 }
 
 

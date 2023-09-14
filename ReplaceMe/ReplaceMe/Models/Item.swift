@@ -68,83 +68,93 @@ class Item {
         
         // note that items go from "1 day remaining" to "replace today" to "1 day overdue"
         let replacementDate = getReplacementDate()
-        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: currDate, to: replacementDate)
+        let timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: currDate, to: replacementDate)
         return timeRemaining
         
     }
-
     
-    func getRemainingTimeAsString() -> String {
+    func roundPositiveDateComponentsAsString(dateComps: DateComponents) -> String {
         
-        // todo: make a remaining time functino
-        
-        var timeRemaining = Calendar.current.dateComponents([.year, .month, .weekOfYear, .day], from: Date(), to: getReplacementDate())
-        timeRemaining.day! += 1
-//        print("timeRemaining for \(name): \(timeRemaining)")
-
-        let year = timeRemaining.year ?? 0
-        let month = timeRemaining.month ?? 0
-        let week = timeRemaining.weekOfYear ?? 0
-        let day = timeRemaining.day ?? 0
-        
-        // get singular unit and value (rounded up)
         var value: Int = 0
         var unit: String = ""
+
         
-        var isOverdue = ""
-        
-        /// TODO: if any of them are negative, say that they are that time unit overdue
-        /// TODO: or if they are all zero, move the date up by 1 day (negative)
-        if (year < 0 || month < 0 || week < 0 || day < 0 ) {
-            isOverdue = " overdue"
-            
-            if (year < 0) {
-                value = year*(-1)
-                unit = "years"
-            } else if (month < 0) {
-                value = month*(-1)
-                unit = "months"
-            } else if (week < 0) {
-                value = week*(-1)
-                unit = "weeks"
-            } else if (day < 0) {
-                value = day*(-1)
-                unit = "days"
-            }
-        } else if (year > 0 || month >= 4) {
-            value = year
-            if (month >= 4) {
+        if (dateComps.year! > 0 || dateComps.month! >= 4) {
+            value = dateComps.year!
+            if (dateComps.month! >= 4) {
                 value += 1
             }
             unit = "years"
-        } else if (month > 0 || week >= 3) {
-            value = month
-            if (week >= 3) {
+
+        } else if (dateComps.month! > 0 || dateComps.weekOfYear! >= 3) {
+            value = dateComps.month!
+            if (dateComps.weekOfYear! >= 3) {
                 value += 1
             }
             unit = "months"
-        } else if (week > 0 || day >= 5) {
-            value = week
-            if (day >= 5) {
+        } else if (dateComps.weekOfYear! > 0 || dateComps.day! >= 5) {
+            value = dateComps.weekOfYear!
+            if (dateComps.day! >= 5) {
                 value += 1
             }
             unit = "weeks"
         } else {
-            value = day
+            value = dateComps.day!
             unit = "days"
         }
-
-        // remove s if plural (same logic in DurationDatePicker)
+        
+        // TODO: maybe turn into DateDuration(value: value, unit: unit) to use .asString(), but out of scope
+        
         var x = "\(value) \(unit)"
+        
+        // remove s if plural
         if (value == 1) {
             x.removeLast()
         }
         
-        x = x + isOverdue
-        
         return x
-        
+
     }
+
+    
+    func getRemainingTimeAsString(currDate: Date = Date()) -> String {
+        
+        var timeRemaining = getRemainingTime(currDate: currDate)
+                        
+        if (timeRemaining.year! < 0 || timeRemaining.month! < 0 || timeRemaining.weekOfYear! < 0 || timeRemaining.day! < 0 ) { // CASE: overdue
+
+            // turn positive and round
+            timeRemaining.year = timeRemaining.year!*(-1)
+            timeRemaining.month = timeRemaining.month!*(-1)
+            timeRemaining.weekOfYear = timeRemaining.weekOfYear!*(-1)
+            timeRemaining.day = timeRemaining.day!*(-1)
+            
+            let roundedTimeRemainingString = roundPositiveDateComponentsAsString(dateComps: timeRemaining)
+            return roundedTimeRemainingString + " overdue"
+            
+        } else if (timeRemaining.year! == 0 && timeRemaining.month! == 0 && timeRemaining.weekOfYear! == 0 && timeRemaining.day! == 0 ) { 
+            
+            // CASE: due today
+            return "Replace today"
+            
+        } else { // CASE: still time left
+            
+            let roundedTimeRemainingString = roundPositiveDateComponentsAsString(dateComps: timeRemaining)
+            return roundedTimeRemainingString + " left"
+        }
+                
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // not tested yet
     
     func isOverdue() -> Bool {
         
