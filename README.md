@@ -47,6 +47,8 @@
 - [ ] Icon to Indicate Preset
 - [ ] Make Preset Attributes Un-editable
 - [ ] Actions for Items (Optional)
+- [ ] Date Duration should load custom date automatically
+- [ ] Look thru emoji for ideas
 
 #### :yellow_circle: Low
 
