@@ -71,3 +71,7 @@
 - [ ] Recyling Tips for Presets
 - [ ] Fun Facts
 - [ ] Initial instruction views (including permissions)
+- [ ] ReplaceMe without launching app
+- [ ] Server Side Actions
+  - [ ] Updating Badge icons
+- [ ] Interactive widget

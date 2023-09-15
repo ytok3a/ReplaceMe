@@ -147,7 +147,9 @@ class Item {
     
     func isOverdue(currDate: Date = Date()) -> Bool {
         
+        
         let timeRemaining = getRemainingTime(currDate: currDate)
+        print("\(name) has time remaining: \(timeRemaining)")
 
         let year = timeRemaining.year ?? 0
         let month = timeRemaining.month ?? 0

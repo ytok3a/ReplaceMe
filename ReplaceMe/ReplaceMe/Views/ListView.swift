@@ -8,33 +8,46 @@
 import SwiftUI
 import SwiftData
 
-func requestAuthorization() -> Void {
-    let center = UNUserNotificationCenter.current()
+
+
+func updateBadge(items: [Item]) -> Void {
     
-    center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-        
-        if let error = error {
-            // Handle the error here.
+    // TODO: maybe this needs to be a callback function for async like above function??
+    
+    print("updating badge...")
+
+    var count = 0
+    for item in items {
+        print("\(item.name) is overdue? \(item.isOverdue())")
+
+        if (item.isOverdue() == true) {
+            count += 1
         }
-        
-        // Enable or disable features based on the authorization.
-        print("accessGranted? \(granted)")
-        return
     }
     
+    print(count)
+    
+    let content = UNMutableNotificationContent()
+    content.badge = NSNumber(integerLiteral: count)
+
 }
 
 struct ListView: View {
     
-    init() {
-        requestAuthorization()
-        // TODO: maybe initialize vars before body
-    }
+    
     
     @State private var sheetIsPresented = false
 
     @Query var items: [Item]
     @Environment(\.modelContext) var modelContext
+    
+    init() {
+        requestAuthorization()
+        updateBadge(items: items)
+        // TODO: maybe initialize vars before body
+    }
+    
+
     
     var body: some View {
         NavigationView {
@@ -53,7 +66,6 @@ struct ListView: View {
 
                                     VStack(alignment: .leading) {
                                         Text(item.name)
-//                                            .fontWeight(.bold)
                                         Text(item.getRemainingTimeAsString())
                                             .font(.subheadline)
                                             .foregroundColor(item.isOverdue() ? .red : .gray)
